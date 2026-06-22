@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>S. Mani Arputha Raj — Filmmaker & Artist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+Tamil:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black:    #0A0A0A;
+      --deep:     #111111;
+      --charcoal: #1C1C1C;
+      --gold:     #C9A84C;
+      --amber:    #E8C16B;
+      --cream:    #F5F0E8;
+      --muted:    #6B6B6B;
+      --white:    #FAFAFA;
+      --film:     #8B1A1A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── FILM STRIP LOADER ── */
+    #loader {
+      position: fixed; inset: 0;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+    #loader.hide { opacity: 0; visibility: hidden; }
+    .film-strip {
+      display: flex; gap: 4px; align-items: center;
+    }
+    .film-hole {
+      width: 12px; height: 18px;
+      border: 2px solid var(--gold);
+      border-radius: 2px;
+      animation: flicker 0.4s infinite alternate;
+    }
+    .film-hole:nth-child(2) { animation-delay: 0.1s; }
+    .film-hole:nth-child(3) { animation-delay: 0.2s; }
+    .film-hole:nth-child(4) { animation-delay: 0.3s; }
+    .film-hole:nth-child(5) { animation-delay: 0.4s; }
+    @keyframes flicker {
+      from { opacity: 0.3; background: transparent; }
+      to   { opacity: 1;   background: var(--gold);  }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 60px;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+      backdrop-filter: blur(2px);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; letter-spacing: 0.15em;
+      color: var(--gold); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--cream); text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+      opacity: 0.7; transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+    .nav-contact-btn {
+      background: transparent; border: 1px solid var(--gold);
+      color: var(--gold) !important; padding: 8px 20px; opacity: 1 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-contact-btn:hover { background: var(--gold) !important; color: var(--black) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 80px 60px;
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse 80% 60% at 60% 30%, #1a1000 0%, var(--black) 70%);
+    }
+    .hero-reel-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: 
+        repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(201,168,76,0.03) 38px, rgba(201,168,76,0.03) 40px),
+        repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(201,168,76,0.03) 38px, rgba(201,168,76,0.03) 40px);
+    }
+    .hero-film-strip {
+      position: absolute; top: 0; right: 80px;
+      width: 60px; height: 100vh;
+      background: var(--charcoal);
+      display: flex; flex-direction: column; gap: 8px; padding: 16px 8px;
+      opacity: 0.5;
+    }
+    .hero-film-frame {
+      flex: 1; background: var(--deep);
+      border-radius: 2px; min-height: 0;
+      background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+      animation: frameFlicker 3s ease-in-out infinite alternate;
+    }
+    .hero-film-frame:nth-child(even) { animation-delay: 0.5s; }
+    .hero-film-frame:nth-child(3n)   { animation-delay: 1s; }
+    @keyframes frameFlicker {
+      0%   { background: #0d0d0d; }
+      100% { background: #1e1a10; }
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--gold);
+    }
+    h1.hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.95; font-weight: 900;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .hero-name-tamil {
+      font-family: 'Noto Sans Tamil', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      color: var(--gold); font-weight: 300;
+      letter-spacing: 0.08em; margin-bottom: 32px;
+    }
+    .hero-roles {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px;
+    }
+    .role-tag {
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 6px 16px; border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold); border-radius: 20px;
+    }
+    .hero-cta { display: flex; gap: 20px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--black);
+      padding: 14px 36px; text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--amber); transform: translateY(-2px); }
+    .btn-secondary {
+      border: 1px solid rgba(245,240,232,0.4); color: var(--cream);
+      padding: 14px 36px; text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    .scroll-hint {
+      position: absolute; bottom: 40px; right: 60px; z-index: 1;
+      writing-mode: vertical-rl; font-size: 0.65rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--muted); display: flex; align-items: center; gap: 12px;
+    }
+    .scroll-hint::after {
+      content: ''; width: 1px; height: 60px; background: var(--muted);
+      animation: scrollLine 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%   { height: 0; opacity: 0; }
+      50%  { height: 60px; opacity: 1; }
+      100% { height: 60px; opacity: 0; }
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 100px 60px; }
+    .section-label {
+      font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700; line-height: 1.1;
+      color: var(--white); margin-bottom: 20px;
+    }
+    .divider { width: 60px; height: 2px; background: var(--gold); margin-bottom: 48px; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--deep); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+    .about-visual {
+      position: relative;
+    }
+    .about-card {
+      background: var(--charcoal); padding: 48px;
+      border-left: 3px solid var(--gold);
+      position: relative;
+    }
+    .about-card::before {
+      content: '"'; font-family: 'Playfair Display', serif;
+      font-size: 8rem; line-height: 1; color: var(--gold);
+      opacity: 0.15; position: absolute; top: 16px; right: 24px;
+    }
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-style: italic;
+      line-height: 1.6; color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .about-origin {
+      font-size: 0.8rem; color: var(--muted); letter-spacing: 0.1em;
+    }
+    .about-origin span { color: var(--gold); }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+    .stat-item { text-align: center; padding: 24px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 700;
+      color: var(--gold); display: block;
+    }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+    .about-text p {
+      font-size: 1rem; line-height: 1.8; color: rgba(245,240,232,0.75);
+      margin-bottom: 20px;
+    }
+    .expertise-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .expertise-tag {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 8px 18px;
+      background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25);
+      color: var(--cream);
+    }
+
+    /* ── WORKS / YOUTUBE ── */
+    #works { background: var(--black); }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .video-card {
+      position: relative; cursor: pointer;
+      background: var(--charcoal);
+      overflow: hidden; group: true;
+      transition: transform 0.3s ease;
+    }
+    .video-card:hover { transform: translateY(-4px); }
+    .video-card:hover .video-overlay { opacity: 1; }
+    .video-thumb {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: cover; display: block;
+      background: var(--deep);
+    }
+    .video-thumb-placeholder {
+      width: 100%; aspect-ratio: 16/9;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+      font-size: 3rem;
+    }
+    .video-overlay {
+      position: absolute; inset: 0;
+      background: rgba(10,10,10,0.7);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .play-btn {
+      width: 60px; height: 60px; border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.5rem;
+    }
+    .video-info { padding: 20px; }
+    .video-title { font-size: 0.9rem; font-weight: 500; color: var(--cream); margin-bottom: 8px; line-height: 1.4; }
+    .video-meta { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; }
+    .video-category {
+      display: inline-block; font-size: 0.62rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    /* ── COMPANIES ── */
+    #companies { background: var(--deep); }
+    .companies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .company-card {
+      padding: 48px; border: 1px solid rgba(201,168,76,0.2);
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .company-card:hover { border-color: var(--gold); }
+    .company-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%; background: var(--gold);
+    }
+    .company-icon { font-size: 2.5rem; margin-bottom: 24px; display: block; }
+    .company-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .company-desc { font-size: 0.9rem; line-height: 1.7; color: rgba(245,240,232,0.65); }
+
+    /* ── SOCIALS / CONTACT ── */
+    #contact { background: var(--black); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-links { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 24px; border: 1px solid rgba(201,168,76,0.15);
+      text-decoration: none; color: var(--cream);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-item:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .contact-value { font-size: 0.95rem; color: var(--cream); }
+    .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .social-btn {
+      padding: 20px; border: 1px solid rgba(201,168,76,0.15);
+      text-decoration: none; color: var(--cream);
+      text-align: center; transition: all 0.2s;
+    }
+    .social-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .social-btn .s-icon { font-size: 1.5rem; display: block; margin-bottom: 8px; }
+    .social-btn .s-name { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep); padding: 40px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--gold);
+    }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      #hero, section { padding: 80px 24px; }
+      .hero-film-strip { display: none; }
+      .about-grid, .contact-grid, .companies-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="film-strip">
+    <div class="film-hole"></div>
+    <div class="film-hole"></div>
+    <div class="film-hole"></div>
+    <div class="film-hole"></div>
+    <div class="film-hole"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">LIFE STUDIOS</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#companies">Studios</a></li>
+    <li><a href="#contact" class="nav-contact-btn">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-reel-bg"></div>
+  <div class="hero-film-strip">
+    <div class="hero-film-frame"></div><div class="hero-film-frame"></div>
+    <div class="hero-film-frame"></div><div class="hero-film-frame"></div>
+    <div class="hero-film-frame"></div><div class="hero-film-frame"></div>
+    <div class="hero-film-frame"></div><div class="hero-film-frame"></div>
+    <div class="hero-film-frame"></div><div class="hero-film-frame"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Filmmaker &amp; Artist — Dindigul, Tamil Nadu</div>
+    <h1 class="hero-name">S. Mani<br>Arputha Raj</h1>
+    <p class="hero-name-tamil">ஸ். மணி அற்புத ராஜ்</p>
+    <div class="hero-roles">
+      <span class="role-tag">Film Maker</span>
+      <span class="role-tag">Music Composer</span>
+      <span class="role-tag">Lyricist</span>
+      <span class="role-tag">Poet</span>
+      <span class="role-tag">Writer</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#works" class="btn-primary">View Works</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <p class="about-quote">Stories are the light I project onto the screen of the soul.</p>
+        <p class="about-origin">From <span>Dindigul District</span>, Tamil Nadu</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-number">19+</span>
+          <span class="stat-label">Videos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Years</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2</span>
+          <span class="stat-label">Studios</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">Stories</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <p class="section-label">About</p>
+      <h2 class="section-title">Crafting Cinematic<br>Tamil Stories</h2>
+      <div class="divider"></div>
+      <p>S. Mani Arputha Raj is a multidisciplinary creative force from Dindigul District, Tamil Nadu. His work spans the full arc of storytelling — from the written word to the composed note, from the poet's pen to the director's lens.</p>
+      <p>As the founder of Life Studios and Life Productions, he has built a creative home that nurtures Tamil cinema, music, and poetry. His YouTube channel "Life Studios" brings these creations to audiences who believe stories have the power to change lives.</p>
+      <p>Every frame, every lyric, every melody carries the fingerprint of his native soil — the rhythms of Dindigul, the depth of Tamil culture, and the universal language of human emotion.</p>
+      <div class="expertise-list">
+        <span class="expertise-tag">Direction</span>
+        <span class="expertise-tag">Screenplay</span>
+        <span class="expertise-tag">Lyrics</span>
+        <span class="expertise-tag">Music Composition</span>
+        <span class="expertise-tag">Poetry</span>
+        <span class="expertise-tag">Production</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <p class="section-label reveal">Filmography &amp; Music</p>
+  <h2 class="section-title reveal">Selected Works</h2>
+  <div class="divider reveal"></div>
+  <div class="works-grid" id="worksGrid"></div>
+</section>
+
+<!-- COMPANIES -->
+<section id="companies">
+  <p class="section-label reveal">Creative Ventures</p>
+  <h2 class="section-title reveal">Studios &amp; Productions</h2>
+  <div class="divider reveal"></div>
+  <div class="companies-grid">
+    <div class="company-card reveal">
+      <span class="company-icon">🎬</span>
+      <h3 class="company-name">Life Studios</h3>
+      <p class="company-desc">The creative studio behind Tamil short films, music videos, and visual storytelling. Life Studios is the primary production house, hosting a growing catalogue of original cinematic work on YouTube.</p>
+    </div>
+    <div class="company-card reveal">
+      <span class="company-icon">🎵</span>
+      <h3 class="company-name">Life Productions</h3>
+      <p class="company-desc">Dedicated to music production and audio compositions, Life Productions brings lyrical poetry to life through sound — crafting original scores, songs, and compositions rooted in Tamil tradition and contemporary feel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Let's Create<br>Something Together</h2>
+      <div class="divider"></div>
+      <div class="contact-links">
+        <a class="contact-item" href="mailto:Lifestudios.m@gmail.com">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email — Studios</div>
+            <div class="contact-value">Lifestudios.m@gmail.com</div>
+          </div>
+        </a>
+        <a class="contact-item" href="mailto:Lifeproductions.m@gmail.com">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email — Productions</div>
+            <div class="contact-value">Lifeproductions.m@gmail.com</div>
+          </div>
+        </a>
+        <a class="contact-item" href="https://wa.me/918270574017" target="_blank">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+91 82705 74017</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="section-label" style="margin-bottom:16px;">Follow the Journey</p>
+      <div class="social-grid">
+        <a class="social-btn" href="https://youtube.com/@LifeStudios" target="_blank">
+          <span class="s-icon">▶</span>
+          <span class="s-name">YouTube<br>Life Studios</span>
+        </a>
+        <a class="social-btn" href="https://instagram.com/life_studios.m" target="_blank">
+          <span class="s-icon">📷</span>
+          <span class="s-name">Instagram<br>life_studios.m</span>
+        </a>
+        <a class="social-btn" href="https://facebook.com/lifestudios" target="_blank">
+          <span class="s-icon">👍</span>
+          <span class="s-name">Facebook<br>Life Studios</span>
+        </a>
+        <a class="social-btn" href="mailto:Lifestudios.m@gmail.com">
+          <span class="s-icon">✉</span>
+          <span class="s-name">Email<br>Collaborate</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LIFE STUDIOS &amp; LIFE PRODUCTIONS</div>
+  <div class="footer-copy">© 2024 S. Mani Arputha Raj. All rights reserved. | Dindigul, Tamil Nadu</div>
+</footer>
+
+<script>
+  // ── LOADER ──
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('loader').classList.add('hide'), 800);
+  });
+
+  // ── VIDEOS ──
+  const videos = [
+    { id: 'fkwWU57kcKo', title: 'Original Work', cat: 'Short Film' },
+    { id: '0_u858XBB6U', title: 'Original Work', cat: 'Music Video' },
+    { id: 'KsN_JZ22Pxw', title: 'Original Work', cat: 'Short Film' },
+    { id: 'OkdeZtqzhuA', title: 'Original Work', cat: 'Short Film' },
+    { id: 'h0PxTTIrF7c', title: 'Original Work', cat: 'Music Video' },
+    { id: '7TKwvwXkSMY', title: 'Original Work', cat: 'Short Film' },
+    { id: 'FZZnNIOOCsM', title: 'Original Work', cat: 'Music Video' },
+    { id: 'sJ5BkaXrxAk', title: 'Original Work', cat: 'Short Film' },
+    { id: 'gRGBmZ3ZuPw', title: 'Original Work', cat: 'Short Film' },
+    { id: 'mPQSz75fgUo', title: 'Original Work', cat: 'Music Video' },
+    { id: 'aKKx3lqforQ', title: 'Original Work', cat: 'Short Film' },
+    { id: '-b6HL9vl3cI', title: 'Original Work', cat: 'Short Film' },
+    { id: '2Wl_XxKUfI0', title: 'Original Work', cat: 'Music Video' },
+    { id: 'sNvjvTTiLVw', title: 'Original Work', cat: 'Short Film' },
+    { id: 'RtrqzdPR1r0', title: 'Original Work', cat: 'Music Video' },
+    { id: 'QX5S6XG6VM0', title: 'Original Work', cat: 'Short Film' },
+    { id: 'ojXwl5IXUaQ', title: 'Original Work', cat: 'Short Film' },
+    { id: 'IAst0vEIiSc', title: 'Original Work', cat: 'Music Video' },
+  ];
+
+  const cats = ['Short Film','Music Video','Short Film','Short Film','Music Video','Short Film','Music Video','Short Film','Short Film','Music Video','Short Film','Short Film','Music Video','Short Film','Music Video','Short Film','Short Film','Music Video'];
+
+  const grid = document.getElementById('worksGrid');
+  videos.forEach((v, i) => {
+    const card = document.createElement('div');
+    card.className = 'video-card reveal';
+    card.innerHTML = `
+      <img class="video-thumb" 
+           src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg"
+           alt="Life Studios Video ${i+1}"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="video-thumb-placeholder" style="display:none">🎬</div>
+      <div class="video-overlay"><div class="play-btn">▶</div></div>
+      <div class="video-info">
+        <span class="video-category">${cats[i]}</span>
+        <div class="video-title">Life Studios — Video ${String(i+1).padStart(2,'0')}</div>
+        <div class="video-meta">Life Studios · Tamil Cinema</div>
+      </div>
+    `;
+    card.addEventListener('click', () => openModal(v.id));
+    grid.appendChild(card);
+  });
+
+  function openModal(id) {
+    window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
+  }
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
