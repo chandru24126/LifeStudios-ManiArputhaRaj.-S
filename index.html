@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>S.Mani Arputha Raj — Filmmaker & Artist</title>
+  <title>S. Mani Arputha Raj — Filmmaker & Artist</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+Tamil:wght@300;400;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -402,8 +402,8 @@
   </div>
   <div class="hero-content">
     <div class="hero-eyebrow">Filmmaker &amp; Artist — Dindigul, Tamil Nadu</div>
-    <h1 class="hero-name">S.Mani<br>Arputha Raj</h1>
-    <p class="hero-name-tamil">சூ.மணி அற்புத ராஜ்</p>
+    <h1 class="hero-name">S. Mani<br>Arputha Raj</h1>
+    <p class="hero-name-tamil">ஸ். மணி அற்புத ராஜ்</p>
     <div class="hero-roles">
       <span class="role-tag">Film Maker</span>
       <span class="role-tag">Music Composer</span>
@@ -429,11 +429,11 @@
       </div>
       <div class="about-stats">
         <div class="stat-item">
-          <span class="stat-number">19+</span>
+          <span class="stat-number">100+</span>
           <span class="stat-label">Videos</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">5+</span>
+          <span class="stat-number">12+</span>
           <span class="stat-label">Years</span>
         </div>
         <div class="stat-item">
@@ -561,53 +561,55 @@
 
   // ── VIDEOS ──
   const videos = [
-    { id: 'fkwWU57kcKo', title: 'Original Work', cat: 'Short Film' },
-    { id: '0_u858XBB6U', title: 'Original Work', cat: 'Music Video' },
-    { id: 'KsN_JZ22Pxw', title: 'Original Work', cat: 'Short Film' },
-    { id: 'OkdeZtqzhuA', title: 'Original Work', cat: 'Short Film' },
-    { id: 'h0PxTTIrF7c', title: 'Original Work', cat: 'Music Video' },
-    { id: '7TKwvwXkSMY', title: 'Original Work', cat: 'Short Film' },
-    { id: 'FZZnNIOOCsM', title: 'Original Work', cat: 'Music Video' },
-    { id: 'sJ5BkaXrxAk', title: 'Original Work', cat: 'Short Film' },
-    { id: 'gRGBmZ3ZuPw', title: 'Original Work', cat: 'Short Film' },
-    { id: 'mPQSz75fgUo', title: 'Original Work', cat: 'Music Video' },
-    { id: 'aKKx3lqforQ', title: 'Original Work', cat: 'Short Film' },
-    { id: '-b6HL9vl3cI', title: 'Original Work', cat: 'Short Film' },
-    { id: '2Wl_XxKUfI0', title: 'Original Work', cat: 'Music Video' },
-    { id: 'sNvjvTTiLVw', title: 'Original Work', cat: 'Short Film' },
-    { id: 'RtrqzdPR1r0', title: 'Original Work', cat: 'Music Video' },
-    { id: 'QX5S6XG6VM0', title: 'Original Work', cat: 'Short Film' },
-    { id: 'ojXwl5IXUaQ', title: 'Original Work', cat: 'Short Film' },
-    { id: 'IAst0vEIiSc', title: 'Original Work', cat: 'Music Video' },
+    { id: 'fkwWU57kcKo', cat: 'Short Film', short: false },
+    { id: '0_u858XBB6U', cat: 'Music Video', short: false },
+    { id: 'KsN_JZ22Pxw', cat: 'Short Film', short: false },
+    { id: 'OkdeZtqzhuA', cat: 'Short Film', short: false },
+    { id: 'h0PxTTIrF7c', cat: 'Music Video', short: false },
+    { id: '7TKwvwXkSMY', cat: 'Short Film', short: false },
+    { id: 'FZZnNIOOCsM', cat: 'Music Video', short: false },
+    { id: 'sJ5BkaXrxAk', cat: 'Short Film', short: false },
+    { id: 'gRGBmZ3ZuPw', cat: 'Short Film', short: false },
+    { id: 'mPQSz75fgUo', cat: 'Music Video', short: false },
+    { id: 'aKKx3lqforQ', cat: 'Short Film', short: false },
+    { id: '-b6HL9vl3cI', cat: 'Short Film', short: false },
+    { id: '2Wl_XxKUfI0', cat: 'Music Video', short: false },
+    { id: 'sNvjvTTiLVw', cat: 'Short Film', short: false },
+    { id: 'RtrqzdPR1r0', cat: 'Music Video', short: false },
+    { id: 'QX5S6XG6VM0', cat: 'Short Film', short: false },
+    { id: 'ojXwl5IXUaQ', cat: 'Short Film', short: false },
+    { id: 'IAst0vEIiSc', cat: 'Music Video', short: false },
+    { id: 'zK8ZVKm8lsE', cat: 'Short', short: true },
+    { id: '4hwlCXojwgc', cat: 'Short', short: true },
+    { id: 'NWHnlEoybSk', cat: 'Short', short: true },
+    { id: 'jDJW0yRi-nQ', cat: 'Short', short: true },
   ];
-
-  const cats = ['Short Film','Music Video','Short Film','Short Film','Music Video','Short Film','Music Video','Short Film','Short Film','Music Video','Short Film','Short Film','Music Video','Short Film','Music Video','Short Film','Short Film','Music Video'];
 
   const grid = document.getElementById('worksGrid');
   videos.forEach((v, i) => {
     const card = document.createElement('div');
     card.className = 'video-card reveal';
+    const thumbUrl = `https://img.youtube.com/vi/${v.id}/mqdefault.jpg`;
+    const yt_url = v.short
+      ? `https://youtube.com/shorts/${v.id}`
+      : `https://www.youtube.com/watch?v=${v.id}`;
     card.innerHTML = `
-      <img class="video-thumb" 
-           src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg"
+      <img class="video-thumb"
+           src="${thumbUrl}"
            alt="Life Studios Video ${i+1}"
            loading="lazy"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="video-thumb-placeholder" style="display:none">🎬</div>
       <div class="video-overlay"><div class="play-btn">▶</div></div>
       <div class="video-info">
-        <span class="video-category">${cats[i]}</span>
+        <span class="video-category">${v.cat}</span>
         <div class="video-title">Life Studios — Video ${String(i+1).padStart(2,'0')}</div>
         <div class="video-meta">Life Studios · Tamil Cinema</div>
       </div>
     `;
-    card.addEventListener('click', () => openModal(v.id));
+    card.addEventListener('click', () => window.open(yt_url, '_blank'));
     grid.appendChild(card);
   });
-
-  function openModal(id) {
-    window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
-  }
 
   // ── SCROLL REVEAL ──
   const observer = new IntersectionObserver(entries => {
