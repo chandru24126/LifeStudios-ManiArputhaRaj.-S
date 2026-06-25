@@ -203,7 +203,6 @@
     }
     @media (max-width: 900px) {
       #hero { grid-template-columns: 1fr; }
-      .hero-photo-wrap { display: none; }
     }
 
     
@@ -383,8 +382,22 @@
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
-      #hero, section { padding: 80px 24px; }
+      #hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        padding: 100px 24px 48px;
+        align-items: start;
+      }
+      .hero-content { grid-column: 1; grid-row: 2; }
+      .scroll-hint { grid-column: 1; grid-row: 3; margin-top: 32px; }
+      .hero-photo-wrap {
+        grid-column: 1; grid-row: 1;
+        justify-content: center;
+        margin-bottom: 32px;
+      }
+      .hero-photo { width: 220px; height: 300px; }
       .hero-film-strip { display: none; }
+      section { padding: 80px 24px; }
       .about-grid, .contact-grid, .companies-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-stats { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
