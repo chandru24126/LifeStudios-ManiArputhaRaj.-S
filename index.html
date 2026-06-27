@@ -445,7 +445,7 @@
   <div class="hero-content">
     <div class="hero-eyebrow">Filmmaker &amp; Artist — Dindigul, Tamil Nadu</div>
     <h1 class="hero-name">S. Mani<br>Arputha Raj</h1>
-    <p class="hero-name-tamil">சூ.மணி அற்புத ராஜ்</p>
+    <p class="hero-name-tamil">ஸ். மணி அற்புத ராஜ்</p>
     <div class="hero-roles">
       <span class="role-tag">Film Maker</span>
       <span class="role-tag">Music Composer</span>
@@ -607,53 +607,79 @@
 
   // ── VIDEOS ──
   const videos = [
-    { id: 'fkwWU57kcKo', cat: 'Short Film', short: false },
-    { id: '0_u858XBB6U', cat: 'Music Video', short: false },
-    { id: 'KsN_JZ22Pxw', cat: 'Short Film', short: false },
-    { id: 'OkdeZtqzhuA', cat: 'Short Film', short: false },
-    { id: 'h0PxTTIrF7c', cat: 'Music Video', short: false },
-    { id: '7TKwvwXkSMY', cat: 'Short Film', short: false },
-    { id: 'FZZnNIOOCsM', cat: 'Music Video', short: false },
-    { id: 'sJ5BkaXrxAk', cat: 'Short Film', short: false },
-    { id: 'gRGBmZ3ZuPw', cat: 'Short Film', short: false },
-    { id: 'mPQSz75fgUo', cat: 'Music Video', short: false },
-    { id: 'aKKx3lqforQ', cat: 'Short Film', short: false },
-    { id: '-b6HL9vl3cI', cat: 'Short Film', short: false },
-    { id: '2Wl_XxKUfI0', cat: 'Music Video', short: false },
-    { id: 'sNvjvTTiLVw', cat: 'Short Film', short: false },
-    { id: 'RtrqzdPR1r0', cat: 'Music Video', short: false },
-    { id: 'QX5S6XG6VM0', cat: 'Short Film', short: false },
-    { id: 'ojXwl5IXUaQ', cat: 'Short Film', short: false },
-    { id: 'IAst0vEIiSc', cat: 'Music Video', short: false },
-    { id: 'zK8ZVKm8lsE', cat: 'Short', short: true },
-    { id: '4hwlCXojwgc', cat: 'Short', short: true },
-    { id: 'NWHnlEoybSk', cat: 'Short', short: true },
-    { id: 'jDJW0yRi-nQ', cat: 'Short', short: true },
+    { id: 'fkwWU57kcKo', cat: 'Short Film', type: 'yt' },
+    { id: '0_u858XBB6U', cat: 'Music Video', type: 'yt' },
+    { id: 'KsN_JZ22Pxw', cat: 'Short Film', type: 'yt' },
+    { id: 'OkdeZtqzhuA', cat: 'Short Film', type: 'yt' },
+    { id: 'h0PxTTIrF7c', cat: 'Music Video', type: 'yt' },
+    { id: '7TKwvwXkSMY', cat: 'Short Film', type: 'yt' },
+    { id: 'FZZnNIOOCsM', cat: 'Music Video', type: 'yt' },
+    { id: 'sJ5BkaXrxAk', cat: 'Short Film', type: 'yt' },
+    { id: 'gRGBmZ3ZuPw', cat: 'Short Film', type: 'yt' },
+    { id: 'mPQSz75fgUo', cat: 'Music Video', type: 'yt' },
+    { id: 'aKKx3lqforQ', cat: 'Short Film', type: 'yt' },
+    { id: '-b6HL9vl3cI', cat: 'Short Film', type: 'yt' },
+    { id: '2Wl_XxKUfI0', cat: 'Music Video', type: 'yt' },
+    { id: 'sNvjvTTiLVw', cat: 'Short Film', type: 'yt' },
+    { id: 'RtrqzdPR1r0', cat: 'Music Video', type: 'yt' },
+    { id: 'QX5S6XG6VM0', cat: 'Short Film', type: 'yt' },
+    { id: 'ojXwl5IXUaQ', cat: 'Short Film', type: 'yt' },
+    { id: 'IAst0vEIiSc', cat: 'Music Video', type: 'yt' },
+    { id: 'zK8ZVKm8lsE', cat: 'Short', type: 'short' },
+    { id: '4hwlCXojwgc', cat: 'Short', type: 'short' },
+    { id: 'NWHnlEoybSk', cat: 'Short', type: 'short' },
+    { id: 'jDJW0yRi-nQ', cat: 'Short', type: 'short' },
+    { id: 'uchEraP2T-A', cat: 'Short', type: 'short' },
+    { id: 'f3LV_MlioS0', cat: 'Short', type: 'short' },
+    { id: '8vib5LfkJOA', cat: 'Short', type: 'short' },
+    { id: 'zcuSTYY3G0c', cat: 'Short', type: 'short' },
+    { id: 'omNDWkk5vXo', cat: 'Short', type: 'short' },
+    { id: 'KplLzi0I8Tk', cat: 'Short', type: 'short' },
+    { id: '9eTn9Ze1vZA', cat: 'Short', type: 'short' },
+    { id: 'EHWziquvBRs', cat: 'Short', type: 'short' },
+    { id: 'FyTPHA-YKgo', cat: 'Short', type: 'short' },
+    { id: 'koNHGvhlXE8', cat: 'Short', type: 'short' },
+    { id: '02jVv-49Vts', cat: 'Short', type: 'short' },
+    { id: 'yRO8gyOhHqU', cat: 'Short', type: 'short' },
+    { url: 'https://www.instagram.com/reel/DZ9C960i5l-/?igsh=MXdqcnVxNHByMXVyYg==', cat: 'Instagram Reel', type: 'insta', icon: '📷' },
+    { url: 'https://www.instagram.com/reel/DZ4R0d0CFbd/?igsh=OWRkaHMxN294NHE4', cat: 'Instagram Reel', type: 'insta', icon: '📷' },
+    { url: 'https://www.facebook.com/share/r/1Djd3VHAWg/', cat: 'Facebook Video', type: 'fb', icon: '👍' },
+    { url: 'https://www.facebook.com/share/v/1EKbMqe1Lj/', cat: 'Facebook Video', type: 'fb', icon: '👍' },
   ];
 
   const grid = document.getElementById('worksGrid');
   videos.forEach((v, i) => {
     const card = document.createElement('div');
     card.className = 'video-card reveal';
-    const thumbUrl = `https://img.youtube.com/vi/${v.id}/mqdefault.jpg`;
-    const yt_url = v.short
-      ? `https://youtube.com/shorts/${v.id}`
-      : `https://www.youtube.com/watch?v=${v.id}`;
+
+    let thumbHtml, openUrl;
+
+    if (v.type === 'yt') {
+      openUrl = `https://www.youtube.com/watch?v=${v.id}`;
+      thumbHtml = `<img class="video-thumb" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="Video ${i+1}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="video-thumb-placeholder" style="display:none">🎬</div>`;
+    } else if (v.type === 'short') {
+      openUrl = `https://youtube.com/shorts/${v.id}`;
+      thumbHtml = `<img class="video-thumb" src="https://img.youtube.com/vi/${v.id}/mqdefault.jpg" alt="Short ${i+1}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="video-thumb-placeholder" style="display:none">🎬</div>`;
+    } else if (v.type === 'insta') {
+      openUrl = v.url;
+      thumbHtml = `<div class="video-thumb-placeholder" style="display:flex;font-size:3rem;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)">📷</div>`;
+    } else if (v.type === 'fb') {
+      openUrl = v.url;
+      thumbHtml = `<div class="video-thumb-placeholder" style="display:flex;font-size:3rem;background:linear-gradient(135deg,#1877f2,#0a5cbf)">🎬</div>`;
+    }
+
     card.innerHTML = `
-      <img class="video-thumb"
-           src="${thumbUrl}"
-           alt="Life Studios Video ${i+1}"
-           loading="lazy"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="video-thumb-placeholder" style="display:none">🎬</div>
+      ${thumbHtml}
       <div class="video-overlay"><div class="play-btn">▶</div></div>
       <div class="video-info">
         <span class="video-category">${v.cat}</span>
-        <div class="video-title">Life Studios — Video ${String(i+1).padStart(2,'0')}</div>
+        <div class="video-title">Life Studios — ${v.cat} ${String(i+1).padStart(2,'0')}</div>
         <div class="video-meta">Life Studios · Tamil Cinema</div>
       </div>
     `;
-    card.addEventListener('click', () => window.open(yt_url, '_blank'));
+    card.addEventListener('click', () => window.open(openUrl, '_blank'));
     grid.appendChild(card);
   });
 
